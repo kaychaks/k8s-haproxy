@@ -1,0 +1,6 @@
+---
+- hosts : loadbalancers
+  roles :
+    - common
+    - basic
+...

@@ -1,0 +1,9 @@
+---
+# event handlers to restart haproxy
+- name : restart haproxy
+  become: yes
+  become_method : sudo
+  service :
+    name : haproxy
+    state : restarted
+...

@@ -1,0 +1,6 @@
+---
+# proxy environment variables
+proxy_env :
+  http_proxy : 
+  https_proxy : 
+...

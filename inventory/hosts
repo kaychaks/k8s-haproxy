@@ -1,0 +1,5 @@
+[all]
+lb1     ansible_host={{vault_nodes.host.ip}}     ansible_python_interpreter=/usr/bin/python3 ansible_user={{vault_nodes.ssh_user}}
+
+[loadbalancers]
+lb1

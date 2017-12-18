@@ -1,0 +1,13 @@
+---
+# basic haproxy config vars
+backend_servers :
+  - name : master1
+    host : {{vault_master.ips.master1}}
+    port : 6443
+  - name : master2
+    host : {{vault_masters.ips.master2}}
+    port : 6443
+  - name : master3
+    host : {{vault_masters.ips.master3}}
+    port : 6443
+...

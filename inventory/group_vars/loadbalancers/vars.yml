@@ -1,0 +1,2 @@
+proxy_user : "{{ vault_proxy_user  }}"
+proxy_pass : "{{ vault_proxy_pass  }}"

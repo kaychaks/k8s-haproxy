@@ -1,0 +1,31 @@
+---
+# - name : make sure user is part of sudoers
+#   become : yes
+#   become_method : sudo
+#   lineinfile :
+#     dest : /etc/sudoers
+#     state : present
+#     regexp : "{{ ansible_ssh_user  }}"
+#     line : "{{ ansible_ssh_user }} ALL=(ALL) ALL"
+#     validate: 'visudo -cf %s'
+
+- name : setup apt-conf proxies
+  become : yes
+  become_method : sudo
+  template :
+    src : apt-conf.cfg.j2
+    dest : /etc/apt/apt.conf
+    mode : 0644
+    owner : root
+    group : root
+
+
+- name : install haproxy
+  become : yes
+  become_method : sudo
+  apt :
+    name : haproxy
+    state : present
+    update_cache : yes
+  environment : "{{proxy_env}}"
+...

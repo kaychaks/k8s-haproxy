@@ -1,0 +1,19 @@
+---
+- name : load basic haproxy configuration
+  become : yes
+  become_method : sudo
+  template :
+    src : haproxy-config.cfg.j2
+    dest : /etc/haproxy/haproxy.cfg
+    mode : 0644
+    validate : haproxy -f %s -c -q
+  notify : restart haproxy
+
+- name : ensure haproxy is started and enabled on boot
+  become : yes
+  become_method : sudo
+  service :
+    name : haproxy
+    state : started
+    enabled : yes
+...

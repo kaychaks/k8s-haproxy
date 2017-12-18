@@ -1,0 +1,11 @@
+listen kubernetes-apiserver-https
+  bind {{ hostvars['lb1']['ansible_host'] }}:8383
+  option ssl-hello-chk
+  mode tcp
+  timeout client 3h
+  timeout server 3h
+  {% for server in backend_servers  %}
+     server {{ server.name }} {{ server.host }}:{{ server.port }}
+  {% endfor %}
+
+  balance roundrobin
